@@ -4,7 +4,7 @@ class SubjectsController < ApplicationController
   end
 
   def new
-
+    @subject = Subject.new
   end
 
   def show
@@ -13,9 +13,12 @@ class SubjectsController < ApplicationController
 
   def create
     @subject = Subject.new(subject_params)
-    @subject.save
 
-    redirect_to @subject
+      if @subject.save
+        redirect_to @subject
+      else
+        render 'new'
+      end
   end
 
   private

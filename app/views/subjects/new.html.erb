@@ -1,6 +1,15 @@
 <div id="page_wrapper">
   <h1>New Subject Page!</h1>
   <%= form_for :subject, url: subjects_path do |f| %>
+    <% if @subject.errors.any? %>
+      <h2><%= pluralize(@subject.errors.count, "error") %> hata var</h2>
+      <ul>
+        <% @subject.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+
+    <% end %>
     <p>
       <%= f.label :title %><br />
       <%= f.text_field :title %>
