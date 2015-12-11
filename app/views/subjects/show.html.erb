@@ -5,8 +5,10 @@
 
   <p class="date">
     <%= time_ago_in_words(@subject.created_at) %> önce
+    <% if user_signed_in? %>
     | <%= link_to 'Düzenle', edit_subject_path(@subject) %>
     | <%= link_to 'Sil', subject_path(@subject), method: :delete, data: { confirm: 'Emin misin?'} %>
+    <% end %>
   </p>
 
   <p class="body">
