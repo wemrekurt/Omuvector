@@ -3,12 +3,55 @@
 <head>
   <title>Omuvector</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <%= stylesheet_link_tag 'application' 'https://fonts.googleapis.com/css?family=Raleway:400,700' %>
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="sidebar">
+    <div id="logo">
+      <%= link_to root_path do %>
+        <%= image_tag "logo.svg" %>
+      <% end %>
+    </div>
 
-<%= yield %>
+  <ul>
+    <li class="category">Website</li>
+    <li><%= link_to "Notlar", root_path %></li>
+    <li>About</li>
+  </ul>
+
+  <ul>
+    <li class="category">Sosyal</li>
+    <li>facebook</li>
+    <li>twitter</li>
+  </ul>
+
+  <p class="sign_in">Admin Login</p>
+</div>
+
+  <div id="main_content">
+    <div id="header">
+      <p>Tüm Notlar</p>
+
+      <div class="buttons">
+        <button href="<%= new_subject_path %>" class="button"><%= link_to "Yeni Not", new_subject_path %></button>
+        <button class="button">Çıkış</button>
+      </div>
+    </div>
+
+    <% flash.each do |name,msg| %>
+      <% content_tag(:div, msg, class:"alert") %>
+    <% end %>
+
+    <%= yield %>
+
+  </div>
+
+
+
 
 </body>
 </html>
