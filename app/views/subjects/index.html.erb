@@ -1,1 +1,10 @@
-asd
+<% @subjects.each do |subject| %>
+  <div class="post_wrapper">
+    <h2 class="title">
+      <%= link_to subject.title, subject %>
+    </h2>
+    <p class="date">
+      <%= subject.created_at.strftime("%B, %d, %Y") %>
+    </p>
+  </div>
+<% end %>
