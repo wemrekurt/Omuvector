@@ -12,4 +12,13 @@
   <p class="body">
     <%= @subject.description %>
   </p>
+
+  <div id="comments">
+    <h2><%= @subject.comments.count %> Yorum</h2>
+    <%= render @subject.comments %>
+
+    <h3>Yorum Ekle</h3>
+    <%= render 'comments/form' %>
+  </div>
+
 </div>
