@@ -1,0 +1,24 @@
+<%= form_for @subject do |f| %>
+  <% if @subject.errors.any? %>
+    <h2><%= pluralize(@subject.errors.count, "error") %> hata var</h2>
+    <ul>
+      <% @subject.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+
+  <% end %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :description %> <br />
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
